@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
+ before_action :set_artikel, only: [:edit, :update, :show, :destroy]
+ 
    
    def destroy
-    @article = Article.find(params[:id])
+    # replaced by set_artikel before action --> @article = Article.find(params[:id])
     @article.destroy
     flash[:notice] = "Artikel verwijderd!!"
     # redirect_to articles_path
@@ -20,11 +22,11 @@ class ArticlesController < ApplicationController
    end
    
    def edit
-    @article = Article.find(params[:id])
+    # replaced by set_artikel before action --> @article = Article.find(params[:id])
    end
    
    def update
-    @article = Article.find(params[:id])
+    # replaced by set_artikel before action --> @article = Article.find(params[:id])
     if @article.update(article_params)
      flash[:notice] = "Artikel succesvol aangepast!"
      redirect_to article_path(@article)
@@ -45,14 +47,18 @@ class ArticlesController < ApplicationController
    end
    
    def show
-    @article = Article.find(params[:id])
+    # replaced by set_artikel before action --> @article = Article.find(params[:id])
    end
    
    
- private
-  def article_params
-      params.require(:article).permit(:title, :description)
+  private
   
+  def set_artikel
+  @article = Article.find(params[:id])
+  end
+ 
+  def article_params
+   params.require(:article).permit(:title, :description)
   end
 
 end
