@@ -1,5 +1,16 @@
 class ArticlesController < ApplicationController
    
+   def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "Artikel verwijderd!!"
+    # redirect_to articles_path
+    respond_to do |wants|
+     wants.html { redirect_to(articles_url) }
+     wants.xml  { head :ok }
+    end
+   end
+   
    def index
     @articles = Article.all
    end
