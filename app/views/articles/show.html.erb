@@ -1,9 +1,14 @@
-<h1>Showing selected article nr: <%=@article.id %></h1>
+<h2 align=center>Titel: <%= @article.title %></h2>
 
-<p>Title: <%= @article.title %> </p>
+<div class="well col-xs-8 col-xs-offset-2">
+    <h4 class="center omschrijving"><strong>Omschrijving/Inhoud:</strong></h4>
+    <hr>
+    <%= simple_format(@article.description) %>
 
-<p>Description: <%= @article.description %></p>
-
-<%= link_to "Edit this article", edit_article_path(@article) %> | 
-
-<%= link_to "Back to artikelen lijst", articles_path %>
+    <div class="article-actions">
+        <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-primary btn-xs" %>
+        <%= link_to "Delete this article", article_path(@article), method: :delete, data: { confirm: "Weet u het zeker? OK=delete"}, 
+                                            class: "btn btn-danger btn-xs" %>
+        <%= link_to "Bekijk alle artikelen", articles_path, class: "btn btn-success btn-xs" %>
+    </div>
+</div>

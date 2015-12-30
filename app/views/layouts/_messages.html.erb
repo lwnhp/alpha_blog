@@ -2,7 +2,8 @@
   <div class="col-xs-10 col-xs-offset-1">
      <% flash.each do |name, msg| %>
         <div class='alert alert-<%= "#{name}" %>'>
-         <a href="#" class="close" data-dismiss="alert">&#215;</a>
+        <%#  <a href="#" class="close" data-dismiss="alert">&#215;</a>  geeft het close-kruisje reachts in de message box %>
+         <button type="button" class="close" aria-label="Close" data-dismiss="alert"><span aria-hidden="false">&times;</span></button> <%# idem: close kruisje %>
          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
         </div>
       <% end %>

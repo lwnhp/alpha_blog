@@ -42,7 +42,7 @@ $navbar-default-bg: black;
 }
 
 footer {
-    font-size: .7em;
+    font-size: .8em;
     background-color: #D8D8D8;
     margin-top: 0px;
     padding-top: 5px;
@@ -61,6 +61,26 @@ footer small {
 footer ul {
     float: right;
     list-style: none;
+}
+
+.article-actions {
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
+}
+
+.artikel-titel {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.artikel-body {
+    border-top: 1px solid #eaeaea;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.omschrijving {
+    margin-top: 0;
 }
 
 footer ul li {
