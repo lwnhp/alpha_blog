@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
    def destroy
     # replaced by set_artikel before action --> @article = Article.find(params[:id])
     @article.destroy
-    flash[:notice] = "Artikel verwijderd!!"
+    flash[:danger] = "Artikel verwijderd!!"
     # redirect_to articles_path
     respond_to do |wants|
      wants.html { redirect_to(articles_url) }
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
    def update
     # replaced by set_artikel before action --> @article = Article.find(params[:id])
     if @article.update(article_params)
-     flash[:notice] = "Artikel succesvol aangepast!"
+     flash[:success] = "Artikel succesvol aangepast!"
      redirect_to article_path(@article)
     else
      render 'edit'
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
    def create
     @article = Article.new(article_params)
     if @article.save
-     flash[:notice] = "Artikel succesvol aangemaakt"
+     flash[:success] = "Artikel succesvol aangemaakt"
      redirect_to article_path(@article)
     else
      render 'new'
