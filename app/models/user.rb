@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX }
              
  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create # doet hetzelfde als REGEX
+ has_secure_password
 end
