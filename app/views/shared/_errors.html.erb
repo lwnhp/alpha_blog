@@ -6,7 +6,7 @@
             <div class="panel-heading">
                 <h2 class="panel-title">
                     <%= pluralize(obj.errors.count, "error") %>
-                    voorkwam uw <%= obj.class.name %> from being saved:
+                    voorkwam uw <%= obj.class.name.demodulize %> from being saved:
                 </h2>
                 <div class="panel-body">
                 <ul>
