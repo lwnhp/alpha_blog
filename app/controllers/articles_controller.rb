@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
  before_action :set_artikel, only: [:edit, :update, :show, :destroy]
- 
+ before_action :require_user, except: [:index, :show]
+ before_action :require_same_user, only: [:edit, :update, :destroy]
    
    def destroy
     # replaced by set_artikel before action --> @article = Article.find(params[:id])
