@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     
     before_action :set_user, only: [:edit, :update, :show] # zie hieronder priv. method set_user -> vult def edit, update en show met @user = User.find(params[:id])
-    before_action :require_user
+    before_action :require_user, except: [:create, :new]
     before_action :require_same_user, only: [:edit, :update]
 
     def index
