@@ -13,3 +13,10 @@
 <div class="center">
     <%= will_paginate @user_artikelen %>
 </div>
+<div>
+    <% if current_user.admin? && current_user != @user && !@user.admin?%> <!-- admin kan zichzelf of andere admin niet verwijderen -->
+    
+    <%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Weet u het zeker? OK=delete"}, 
+                                                class: "btn btn-danger btn-xs" %>
+    <% end %>
+</div>

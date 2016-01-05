@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
     
-    before_action :set_user, only: [:edit, :update, :show] # zie hieronder priv. method set_user -> vult def edit, update en show met @user = User.find(params[:id])
+    before_action :set_user, only: [:edit, :update, :show, :destroy] # zie hieronder priv. method set_user -> vult def edit, update en show met @user = User.find(params[:id])
     before_action :require_user, except: [:create, :new]
     before_action :require_same_user, only: [:edit, :update]
+    before_action :require_admin, only: [:destroy]
 
     def index
         @users = User.paginate(page: params[:page], per_page: 5)
@@ -40,6 +41,20 @@ class UsersController < ApplicationController
         @user_artikelen = @user.articles.paginate(page: params[:page], per_page: 5)
     end
     
+    def destroy
+        flash[:danger] = "user #{@user.username} and all his/her articles have been deleted"
+        @user.destroy
+        redirect_to users_path
+    
+    end
+    
+    def maak_admin
+        flash[:success] = "user #{@user.username} is nu admin"
+        redirect_to users_path
+        
+    end
+
+    
 private
 
     def user_params
@@ -57,4 +72,10 @@ private
         end
     end
 
+    def require_admin
+        if logged_in? and !current_user.admin?
+            flash[:danger] = "Only admin users can perform that action!"
+            redirect_to root_path
+        end
+    end
 end
