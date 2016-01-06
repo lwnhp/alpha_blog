@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CategoriesControllerTest < ActionController::TestCase
     
-    def setup       # mag geen andere naam hebben, anders werkt het niet ... #
+    def setup       # method mag geen andere naam dan 'setup' hebben, anders werkt het niet ... #
         @category = Category.create(name: "sport")
     end
     

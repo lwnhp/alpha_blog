@@ -4,14 +4,14 @@ class ArticlesController < ApplicationController
  before_action :require_same_user, only: [:edit, :update, :destroy]
    
    def destroy
-    # replaced by set_artikel before action --> @article = Article.find(params[:id])
-    @article.destroy
-    flash[:danger] = "Artikel verwijderd!!"
-    # redirect_to articles_path
-    respond_to do |wants|
-     wants.html { redirect_to(articles_url) }
-     wants.xml  { head :ok }
-    end
+        # replaced by set_artikel before action --> @article = Article.find(params[:id])
+      @article.destroy
+      flash[:danger] = "Artikel verwijderd!!"
+        # redirect_to articles_path
+      respond_to do |wants|
+        wants.html { redirect_to(articles_url) }
+        wants.xml  { head :ok }
+      end
    end
    
    def index
