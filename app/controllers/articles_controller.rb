@@ -64,4 +64,11 @@ class ArticlesController < ApplicationController
    params.require(:article).permit(:title, :description)
   end
 
+  def require_same_user
+     if current_user != @article.user and !current_user.admin?
+        flash[:danger] = "U kunt alleen uw eigen artikelen aanpassen of verwijderen!"
+        redirect_to article_path
+     end
+  end
+  
 end
