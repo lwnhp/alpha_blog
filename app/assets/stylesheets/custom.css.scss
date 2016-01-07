@@ -63,6 +63,11 @@ footer ul {
     list-style: none;
 }
 
+footer ul li {
+    float: left;
+    margin-left: 15px;
+}
+
 .article-actions {
     border-top: 1px solid #eaeaea;
     padding-top: 5px;
@@ -94,7 +99,13 @@ footer ul {
     margin-top: 0;
 }
 
-footer ul li {
-    float: left;
-    margin-left: 15px;
+.badge {
+    background-color: #CEF6F5;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+.input_checkbox input {
+    width: auto !important;
 }
