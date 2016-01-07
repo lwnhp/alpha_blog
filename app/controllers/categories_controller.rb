@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
     
+    before_action :require_admin, only: [:create, :new]
+    
     def index
         @categories = Category.paginate(page: params[:page], per_page: 5)
     end
@@ -28,6 +30,14 @@ class CategoriesController < ApplicationController
     def category_params
         params.require(:category).permit(:name)
     end
+    
+    def require_admin
+      if !logged_in? or (logged_in? and !current_user.admin?)
+        flash[:danger] = "Alleen admins mogen nieuwe categorieën definiëren!"
+        redirect_to root_path
+      end
+    end
+
     
     
     
